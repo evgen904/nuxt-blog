@@ -35,15 +35,31 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat suscipit ducimus aliquid nostrum iure aut neque, harum libero quod non.
       </p>
     </main>
+    <footer>
+      <!-- Form -->
+      <div class="comments" v-if="true">
+        <app-comment
+          v-for="comment in 4"
+          :key="comment"
+          :comment="comment"
+        /> 
+      </div>
+      <div class="text-center" v-else>Комментариев нет</div>
+    </footer>
   </article>
 </template>
 
 <script>
+import AppComment from "@/components/main/Comment"
+
 export default {
   name: "IdPost",
   // params - параметры адресной строки
   validate({params}) {
     return Boolean(params.id)
+  },
+  components: {
+    AppComment
   }
 }
 </script>
