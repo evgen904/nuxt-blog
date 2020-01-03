@@ -37,13 +37,14 @@ export default {
   name: "Post",
   methods: {
     openPost() {
-
+      const id = 'test-id'
+      this.$router.push(`/post/${id}`)
     }
   }
 }
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
   .post {
     margin-bottom: 1.5rem;
     &-header {
@@ -52,7 +53,6 @@ export default {
       align-items: center;
     }
     &-body {
-      margin-bottom: 1rem;
       .post-img {
         width: 100%;
         height: auto;
