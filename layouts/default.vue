@@ -14,7 +14,6 @@
 import AppNavigation from "@/components/main/Navigation"
 
 export default {
-  name: "Default layouts",
   components: {
     AppNavigation
   }
