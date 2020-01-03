@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
   nav {
     display: flex;
     align-items: center;
