@@ -36,7 +36,10 @@
       </p>
     </main>
     <footer>
-      <app-comment-form />
+      <app-comment-form
+        v-if="canAddComment"
+        @created="createCommentHandler"
+      />
 
       <div class="comments" v-if="true">
         <app-comment
@@ -63,6 +66,16 @@ export default {
   components: {
     AppComment,
     AppCommentForm
+  },
+  data() {
+    return {
+      canAddComment: true
+    }
+  },
+  methods: {
+    createCommentHandler() {
+      this.canAddComment = false
+    }
   }
 }
 </script>
