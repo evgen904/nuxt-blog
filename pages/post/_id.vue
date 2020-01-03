@@ -36,7 +36,8 @@
       </p>
     </main>
     <footer>
-      <!-- Form -->
+      <app-comment-form />
+
       <div class="comments" v-if="true">
         <app-comment
           v-for="comment in 4"
@@ -51,6 +52,7 @@
 
 <script>
 import AppComment from "@/components/main/Comment"
+import AppCommentForm from "@/components/main/CommentForm"
 
 export default {
   name: "IdPost",
@@ -59,7 +61,8 @@ export default {
     return Boolean(params.id)
   },
   components: {
-    AppComment
+    AppComment,
+    AppCommentForm
   }
 }
 </script>
