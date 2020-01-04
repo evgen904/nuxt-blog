@@ -60,7 +60,26 @@ export default {
   },
   methods: {
     onSubmit() {
+      // т.к. мы ждем ответа, то метод будет ассинхронный async, await - ждем ответ
+      this.$refs.form.validate(async valid => {
+        if (valid) {
+          this.loading = true
 
+          try {
+            const formData = {
+              login: this.controls.login,
+              password: this.controls.password
+            }
+
+            await this.$store.dispatch('auth/login', formData)
+            // при успешном запросе делаем редирект в админку
+            this.$router.push('/admin')
+
+          } catch (e) {
+            this.loading = false
+          }
+        }
+      })
     }
   }
 }

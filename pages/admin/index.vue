@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'Page admin',
+  name: 'PageAdmin',
   // в какой layout будет направлен роут
   layout: 'admin'
 }
