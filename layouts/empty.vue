@@ -4,6 +4,21 @@
   </div>
 </template>
 
+<script>
+export default {
+  computed: {
+    error() {
+      return this.$store.getters.error
+    }
+  },
+  watch: {
+    error(val) {
+      this.$message.error(val)
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 .empty-layout {
   display: flex;
