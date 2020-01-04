@@ -58,6 +58,13 @@ export default {
       }
     }
   },
+  mounted() {
+    const {message} = this.$route.query
+
+    if (message === 'login') {
+      this.$message.info('ДЛя начала войдите в систему!')
+    }
+  },
   methods: {
     onSubmit() {
       // т.к. мы ждем ответа, то метод будет ассинхронный async, await - ждем ответ

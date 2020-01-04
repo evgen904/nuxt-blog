@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>dsf sdfsdf</h1>
+    <h1>Welcome to admin page</h1>
   </div>
 </template>
 
@@ -8,7 +8,8 @@
 export default {
   name: 'PageAdmin',
   // в какой layout будет направлен роут
-  layout: 'admin'
+  layout: 'admin',
+  middleware: ['admin-auth']
 }
 </script>
 
