@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+
+const authRoutes = require('./routes/auth.routes')
 const keys = require('./keys')
 const app = express()
 
@@ -10,6 +12,10 @@ mongoose.connect('mongodb://evgeniy:q123456@cluster0-shard-00-00-kmq61.mongodb.n
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
+
+// регистрация роута для авторизации
+app.use('/api/auth', authRoutes)
+
 
 // module.exports экспортируем переменную app на ружу
 module.exports = app
