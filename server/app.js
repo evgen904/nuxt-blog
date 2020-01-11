@@ -9,6 +9,9 @@ const passport = require('passport')
 const passportStrategy = require('./middlewaer/passport-stategy')
 
 const authRoutes = require('./routes/auth.routes')
+
+// подкл. роуты
+const postRoutes = require('./routes/post.routes')
 const keys = require('./keys')
 const app = express()
 
@@ -25,8 +28,9 @@ passport.use(passportStrategy)
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-// регистрация роута для авторизации
+// регистрация роута для авторизации, /api/auth - название модуля
 app.use('/api/auth', authRoutes)
+app.use('/api/post', postRoutes)
 
 
 // module.exports экспортируем переменную app на ружу
