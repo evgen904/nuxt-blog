@@ -60,6 +60,27 @@ module.exports.login = async (req, res) => {
   }
 }
 
-module.exports.createUser = (req, res) => {
+module.exports.createUser = async (req, res) => {
+  // проверим есть ли логин
+  const condidate = await User.findOne({login: req.body.login})
+
+  if (condidate) {
+    res.status(409).json({message: 'Такой логин уже занят'})
+  } else {
+
+    // шифруем пароль, salt вспомогательный хеш
+    const salt = bcrypt.genSaltSync(10)      
+    
+    // hashSync первым параметрм указываем название, вторым хеш
+    const user = new User({
+      login: res.body.login,
+      password: bcrypt.hashSync(req.body.password, salt)
+    })
+
+    // сохраняем в базу, через await, и когда сохр. выведем сообщение клиенту
+    await user.save()
+    // 201 когда что-то создается успешнно, уникальный id создастся
+    res.status(201).json(user)
+  }
 
 }
