@@ -8,6 +8,7 @@ const keys = require('../keys')
 
 // создаем модель User, из коллекции
 //const User = model('users')
+const User = require('../models/user.model')
 
 // jwtFromRequest указываем каким образом будет считывать JWT токен(где он находится)
 // с фронта будет отправлять с хедора, возьмем с ExtractJwt
