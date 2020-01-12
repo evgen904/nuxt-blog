@@ -1,11 +1,15 @@
 // защита роутов, к примеру добавление, редактирование поста
 const passport = require('passport')
 
+// экспорт роута из экспресса
+const {Router} = require('express')
+
+// middlewaer для файлов (картинок)
+const upload = require('../middlewaer/upload')
+
 // подкл. контроллер
 const ctr = require('../controllers/post.controller')
 
-// экспорт роута из экспресса
-const {Router} = require('express')
 const router = Router()
 
 // Admin, должны защищаться passport-ом
@@ -17,6 +21,8 @@ router.post(
   '/admin/',
   // passport.authenticate - проверка наличия токена
   passport.authenticate('jwt', {session: false}),
+  // название берем из - /store/post/ actions - create, FormData - fd.append('image', image, image.name)
+  upload.single('image'),
   ctr.create
 )
 
