@@ -7,7 +7,7 @@ const {model} = require('mongoose')
 const keys = require('../keys')
 
 // создаем модель User, из коллекции
-const User = model('user')
+//const User = model('users')
 
 // jwtFromRequest указываем каким образом будет считывать JWT токен(где он находится)
 // с фронта будет отправлять с хедора, возьмем с ExtractJwt

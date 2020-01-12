@@ -15,7 +15,7 @@ const postRoutes = require('./routes/post.routes')
 const keys = require('./keys')
 const app = express()
 
-mongoose.connect(keys.MONGO_URI)
+mongoose.connect(keys.MONGO_URI, { useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true })
   .then(() => console.log('MongoDB connected...'))
   .catch(error => console.log(error))
 
