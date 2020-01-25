@@ -25,9 +25,11 @@ export const actions = {
   },
   async createUser({commit}, formData) {
     try {
-      console.log('create User', formData)
+      // адрес берем с /server/routes/auth.routes.js - /api/auth/admin/create
+      await this.$axios.post('/api/auth/admin/create', formData)
     } catch (e) {
-
+      commit('setError', e, {root: true})
+      throw e
     }
   },
   setToken({commit}, token) {

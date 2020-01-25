@@ -73,7 +73,7 @@ module.exports.createUser = async (req, res) => {
     
     // hashSync первым параметрм указываем название, вторым хеш
     const user = new User({
-      login: res.body.login,
+      login: req.body.login,
       password: bcrypt.hashSync(req.body.password, salt)
     })
 
