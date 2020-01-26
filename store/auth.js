@@ -33,13 +33,18 @@ export const actions = {
     }
   },
   setToken({commit}, token) {
+    // сохраняем токен в хедер, чтобы работала авторизация
+    this.$axios.setToken(token, 'Bearer')
     commit('setToken', token)
   },
   logout({commit}) {
+    // очищаем токен
+    this.$axios.setToken(false)
     commit('clearToken')
   }
 }
 
 export const getters = {
-  isAuthenticated: state => Boolean(state.token)
+  isAuthenticated: state => Boolean(state.token),
+  token: state => state.token
 }
