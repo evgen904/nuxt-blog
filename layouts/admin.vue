@@ -18,6 +18,16 @@ import AppAside from "@/components/admin/Aside"
 export default {
   components: {
     AppAside
+  },
+  computed: {
+    error() {
+      return this.$store.getters.error
+    }
+  },
+  watch: {
+    error(val) {
+      this.$message.error(val.response.data.message)
+    }
   }
 }
 </script>

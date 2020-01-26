@@ -13,7 +13,7 @@ export default {
   },
   watch: {
     error(val) {
-      this.$message.error(val)
+      this.$message.error(val.response.data.message)
     }
   }
 }
