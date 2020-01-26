@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
   filename(req, file, cb) {
     // moment - текущая дата
     // ${moment().format('DDMMYYYY-HHmmss_SSS') создаем хешь чтобы название файлов не повторялось
-    cb(null, `${file.originalname}-${moment().format('DDMMYYYY-HHmmss_SSS')}`)
+    cb(null, `${moment().format('DDMMYYYY-HHmmss_SSS')}-${file.originalname}`)
   }
 })
 
