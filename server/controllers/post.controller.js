@@ -45,7 +45,7 @@ module.exports.getById = async (req, res) => {
     // название должно совпадать с роутом, по названию которое указали '/admin/:id',
     // получаем список комментариев, через populate где указываем коллекцию (модель)
     // exec сначала принимает ошибку, затем объект поста, который отправим пользователю
-    await (await Post.findById(req.params.id)).populate('comments').exec((error, post) => {
+    await Post.findById(req.params.id).populate('comments').exec((error, post) => {
       res.json(post)
     })
   } catch(e) {
