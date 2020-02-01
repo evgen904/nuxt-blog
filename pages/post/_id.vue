@@ -2,7 +2,7 @@
   <article class="post">
     <header class="post-header">
       <div class="post-title">
-        <h1>Post title</h1>
+        <h1>{{ post.title }}</h1>
         <nuxt-link to="/">
           <i class="el-icon-back"></i>
         </nuxt-link>
@@ -10,30 +10,22 @@
       <div class="post-info">
         <small>
           <i class="el-icon-time"></i>
-          {{ new Date().toLocaleString() }}
+          {{ new Date(post.date).toLocaleString() }}
         </small>
         <small>
           <i class="el-icon-view"></i>
-          42
+          {{ post.views }}
         </small>
       </div>
       <div class="post-image">
         <img 
-          src="https://cdn25.img.ria.ru/images/155976/42/1559764281_0:0:1920:1280_1440x900_80_0_1_c475a391916f18b3c56b23fabb77e3f2.jpg.webp" 
+          :src="`/${post.imageUrl}`" 
           alt="post image"
         />
       </div>
     </header>
     <main class="post-content">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat suscipit ducimus aliquid nostrum iure aut neque, harum libero quod non.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat suscipit ducimus aliquid nostrum iure aut neque, harum libero quod non.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat suscipit ducimus aliquid nostrum iure aut neque, harum libero quod non.
-      </p>
+      <vue-markdown>{{post.text}}</vue-markdown>
     </main>
     <footer>
       <app-comment-form
@@ -41,9 +33,9 @@
         @created="createCommentHandler"
       />
 
-      <div class="comments" v-if="true">
+      <div class="comments" v-if="post.comments.length">
         <app-comment
-          v-for="comment in 4"
+          v-for="comment in post.comments"
           :key="comment"
           :comment="comment"
         /> 
@@ -66,6 +58,13 @@ export default {
   components: {
     AppComment,
     AppCommentForm
+  },
+  async asyncData({store, params}) {
+    const post = await store.dispatch('post/fetchById', params.id)
+    await store.dispatch('post/addView', post)
+    return {
+      post: {...post, views: ++post.views}
+    }
   },
   data() {
     return {
