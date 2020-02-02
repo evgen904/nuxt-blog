@@ -53,6 +53,15 @@ router.delete(
   ctr.remove
 )
 
+// добавили get т.к. выше есть роут get '/admin/:id'
+// ctr контрол
+router.get(
+  '/admin/get/analytics',
+  passport.authenticate('jwt', {session: false}),
+  ctr.getAnalytics
+)
+
+
 // Base - публичные инпоинты
 // /api/post
 
