@@ -59,7 +59,7 @@ export default {
   middleware: ['admin-auth'],
   head() {
     return {
-      title: `Пост | ${this.post.title}`
+      title: `${this.post.title} | ${process.env.appName}`
     }
   },
   // validate если в адресной строке не указан id то возвращаем 404 стр.

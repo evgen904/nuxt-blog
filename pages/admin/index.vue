@@ -22,6 +22,9 @@ export default {
   // в какой layout будет направлен роут
   layout: 'admin',
   middleware: ['admin-auth'],
+  head: {
+    title: `Аналитика | ${process.env.appName}`
+  },
   async asyncData({store}) {
     const {views, comments} = await store.dispatch('post/getAnalytics')
     return {views, comments}

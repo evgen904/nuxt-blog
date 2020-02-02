@@ -56,6 +56,11 @@ export default {
   validate({params}) {
     return Boolean(params.id)
   },
+  head() {
+    return {
+      title: `${this.post.title} | ${process.env.appName}`
+    }
+  },
   components: {
     AppComment,
     AppCommentForm
