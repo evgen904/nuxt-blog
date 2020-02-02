@@ -27,7 +27,7 @@
         <small class="mr">
           <i class="el-icon-time"></i>
           <span>
-            {{ new Date(post.date).toLocaleString() }}
+            {{ post.date | date }}
           </span>
         </small>
         <small>
