@@ -1,5 +1,7 @@
 # nuxt-blog
 
+https://nuxt-ssr-blog-js.herokuapp.com/
+
 > My astonishing Nuxt.js project
 
 ## Build Setup
